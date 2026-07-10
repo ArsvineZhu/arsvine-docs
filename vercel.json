@@ -5,8 +5,5 @@
   "installCommand": "pnpm install",
   "framework": null,
   "cleanUrls": true,
-  "trailingSlash": true,
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/$1.html" }
-  ]
+  "trailingSlash": false
 }
