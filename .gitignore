@@ -1,7 +1,8 @@
-# Local
+# Local tooling
 .DS_Store
 *.local
 *.log*
+.claude/launch.json
 
 # Dist
 node_modules
@@ -23,3 +24,5 @@ doc_build/
 .vscode/*
 !.vscode/extensions.json
 .idea
+
+.vercel
