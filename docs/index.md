@@ -18,7 +18,7 @@ features:
     details: 主站架构、内容系统、路由模型、部署运行与维护约定。
     link: /realm/
   - title: Website Infrastructure
-    details: Vercel、Cloudflare、COS 图片工作流、SEO、RSS、Sitemap 与基础安全。
+    details: Vercel、腾讯云 DNSPod、COS 图片工作流、SEO、RSS、Sitemap 与基础安全。
     link: /website/
   - title: AI Systems
     details: Persona Runtime、视觉语义解释、Agent 工作流与系统设计记录。

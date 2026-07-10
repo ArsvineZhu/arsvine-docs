@@ -37,8 +37,9 @@ description: Vercel + COS + ISR + 自定义 server 的运行模型。
 
 ## 域名与 DNS
 
-- 主域 `arsvine.com` 走 Cloudflare
-- 文档子域 `docs.arsvine.com` 由独立 Vercel 项目承担，CNAME 到 Vercel 提供的目标
+- 域名在腾讯云注册，DNS 解析走腾讯云 DNSPod
+- 主域 `arsvine.com` 与文档子域 `docs.arsvine.com` 通过 CNAME 指向 Vercel 提供的目标
+- 详见 `website/vercel-dnspod.md`
 
 ## 环境变量
 

@@ -39,8 +39,8 @@ description: 站点元信息、revalidate secret、TOTP、access cookie、远端
 ## CSP 与 Headers
 
 - 站点默认带 `Strict-Transport-Security`、`X-Content-Type-Options: nosniff`、`Referrer-Policy`
-- 启用 Cloudflare 代理后可以叠加 Cloudflare 的 WAF 规则
 - 自定义 header 的源头应在 `next.config.js` 与 `server.js` 中显式声明，便于审查
+- 如需 WAF / 速率限制，DNSPod 提供基础的 DNS 防护；更细的规则建议在 Vercel 项目层配置（Firewall、Rate Limiting）
 
 ## 私密内容清单（不要写进公开文档）
 
@@ -51,4 +51,4 @@ description: 站点元信息、revalidate secret、TOTP、access cookie、远端
 - 私有桶路径
 - 真实高价值资源映射
 - 未公开朋友信息
-- Vercel / Cloudflare 后台截图中含敏感字段的部分
+- Vercel / 腾讯云 DNSPod 后台截图中含敏感字段的部分

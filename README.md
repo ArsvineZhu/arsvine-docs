@@ -16,7 +16,7 @@
 - TypeScript 配置
 - Markdown / MDX
 - `@rspress/plugin-sitemap`
-- 部署：Vercel（独立项目）+ Cloudflare DNS
+- 部署：Vercel（独立项目）+ 腾讯云 DNSPod 解析
 
 ## 本地开发
 
@@ -80,7 +80,7 @@ arsvine-docs/
 - 私有桶路径
 - 真实高价值资源映射
 - 未公开朋友信息
-- Vercel / Cloudflare 后台截图里带敏感字段的部分
+- Vercel / 腾讯云 DNSPod 后台截图里带敏感字段的部分
 
 可以写「流程」和「字段名」，不能写「真实密钥」和「私有路径」。
 
@@ -103,16 +103,18 @@ arsvine-docs/
 1. Vercel → Project → Settings → Domains → 添加 `docs.arsvine.com`
 2. Vercel 提供一个 CNAME 目标（形如 `cname.vercel-dns.com`）
 
-### Cloudflare DNS
+### 腾讯云 DNSPod 解析
 
-```text
-Type: CNAME
-Name: docs
-Target: <Vercel 提供的 CNAME>
-Proxy status: DNS only   # 首次验证阶段保持 DNS only
-```
+1. 登录 [DNSPod 控制台](https://console.dnspod.cn/)
+2. 域名解析 → 选中 `arsvine.com`
+3. 添加记录：
+   - 主机记录：`docs`
+   - 记录类型：`CNAME`
+   - 记录值：Vercel 给出的 CNAME 目标
+   - TTL：`600`
+4. 保存后等待几十秒到几分钟，回到 Vercel 域名页确认状态为 **Valid Configuration**
 
-HTTPS 由 Vercel 自动签发。验证通过后可以视情况启用 Cloudflare 代理。
+HTTPS 由 Vercel 自动签发。
 
 ## 仓库
 

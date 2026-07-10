@@ -10,6 +10,14 @@ export default defineConfig({
 
   llms: true,
 
+  i18nSource: (source) => {
+    for (const key of Object.keys(source)) {
+      if (source[key].zh && !source[key]['zh-CN']) source[key]['zh-CN'] = source[key].zh;
+    }
+    if (source.editLinkText) source.editLinkText['zh-CN'] = '在 GitHub 上编辑此页';
+    return source;
+  },
+
   plugins: [
     pluginSitemap({
       siteUrl: 'https://docs.arsvine.com',
@@ -53,7 +61,7 @@ export default defineConfig({
           text: 'Website Infrastructure',
           items: [
             { text: '概览', link: '/website/' },
-            { text: 'Vercel / Cloudflare', link: '/website/vercel-cloudflare' },
+            { text: 'Vercel 与 DNSPod', link: '/website/vercel-dnspod' },
             { text: 'COS 图片工作流', link: '/website/cos-image-workflow' },
             { text: 'SEO 与安全', link: '/website/seo-and-security' },
             { text: '内容流水线', link: '/website/content-pipeline' },
@@ -85,12 +93,8 @@ export default defineConfig({
 
     editLink: {
       docRepoBaseUrl: 'https://github.com/ArsvineZhu/arsvine-docs/tree/main/docs',
-      text: '在 GitHub 上编辑此页',
     },
 
     lastUpdated: true,
-    outlineTitle: '目录',
-    prevPageText: '上一页',
-    nextPageText: '下一页',
   },
 });
