@@ -3,5 +3,10 @@
   "buildCommand": "pnpm build",
   "outputDirectory": "doc_build",
   "installCommand": "pnpm install",
-  "framework": null
+  "framework": null,
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/$1.html" }
+  ]
 }
