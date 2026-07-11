@@ -1,6 +1,6 @@
 ---
 title: Overview
-description: AI-related systems: adaptive performance, geo signals, content acquisition.
+description: "AI-related systems: adaptive performance, geo signals, content acquisition."
 ---
 
 # AI Systems overview

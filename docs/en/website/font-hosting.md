@@ -1,6 +1,6 @@
 ---
 title: Font hosting
-description: Self-hosted Google Fonts: source, fetching, upload, and required metadata.
+description: "Self-hosted Google Fonts: source, fetching, upload, and required metadata."
 ---
 
 # Font hosting

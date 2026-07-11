@@ -1,6 +1,6 @@
 ---
 title: Overview
-description: Realm visual system: typography, loading, transitions, Three.js effects, and relation to other design languages.
+description: "Realm visual system: typography, loading, transitions, Three.js effects, and relation to other design languages."
 ---
 
 # Design System overview

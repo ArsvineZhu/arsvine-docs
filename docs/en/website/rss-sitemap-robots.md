@@ -1,6 +1,6 @@
 ---
 title: RSS / Sitemap / Robots
-description: Dynamically generated SEO files: URL templates and runtime triggers.
+description: "Dynamically generated SEO files: URL templates and runtime triggers."
 ---
 
 # RSS / Sitemap / Robots

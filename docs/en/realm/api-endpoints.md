@@ -1,6 +1,6 @@
 ---
 title: API endpoints
-description: The 13 routes under pages/api/*: purpose, request/response, security boundaries.
+description: "The 13 routes under pages/api/*: purpose, request/response, security boundaries."
 ---
 
 # API endpoints

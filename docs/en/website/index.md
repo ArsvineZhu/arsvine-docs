@@ -1,6 +1,6 @@
 ---
 title: Overview
-description: Arsvine site runtime: DNS, deployment, object storage, SEO, security.
+description: "Arsvine site runtime: DNS, deployment, object storage, SEO, security."
 ---
 
 # Website Infrastructure overview

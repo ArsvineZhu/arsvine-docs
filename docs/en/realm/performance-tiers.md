@@ -1,6 +1,6 @@
 ---
 title: Performance tiers
-description: useAdaptivePerformance four-tier controller: design, sampling, and capability flags.
+description: "useAdaptivePerformance four-tier controller: design, sampling, and capability flags."
 ---
 
 # Performance tiers

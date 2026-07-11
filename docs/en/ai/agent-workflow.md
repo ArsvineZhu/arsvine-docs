@@ -1,6 +1,6 @@
 ---
 title: Agent workflow
-description: Maintainer / AI coding agent collaboration: input conventions, decision boundaries, PR template, CI gates.
+description: "Maintainer / AI coding agent collaboration: input conventions, decision boundaries, PR template, CI gates."
 ---
 
 # Agent workflow
