@@ -61,15 +61,6 @@ Note: `/[locale]/game` **does not exist**. `useLayoutRouteMode` and prefetch mat
 - `life/[slug].tsx`: `paths` flattens `data/life` (gameData / travelData / otherData) for the active locale. `fallback: false`.
 - `blog/[slug].tsx`: `paths` pulls the slug list from `blog-index.json` (when the external content repo is configured) or falls back to the bundled `content/blog/init/` posts. `fallback: 'blocking'` allows new slugs to be rendered on demand and then cached via ISR.
 
-## State and layout contexts
-
-Several contexts sit alongside `routes-and-proxy`:
-
-- `contexts/AppContext.tsx` — site-wide interactive state: loading sequence, power/battery/inversion, real-time stats, home-page typing effects, column hover state.
-- `contexts/TransitionContext.tsx` — controls route transition animations. **All internal navigation must use `useTransition().navigateTo(url)`**, never `router.push()`. Supports `setBackOverride()` so detail views and lightboxes can intercept BACK behavior.
-- `contexts/LayoutAnchorsContext.tsx` — registers the active scroll container. The layout uses a locked-height content container, so deep-link scrolling must target that container instead of the document viewport.
-- `contexts/SiteAssetsContext.tsx` — exposes resolved site-shell assets (favicon, `og:image`, avatar).
-
 ## Route loading overlay
 
 `useRouteLoadingKind(router)` decides the loading overlay variant from the **leaving path**, not the target:
@@ -78,3 +69,8 @@ Several contexts sit alongside `routes-and-proxy`:
 - `blog detail → blog detail`: standalone overlay; left HUD is already hidden
 
 Do not flip this to target-based selection — it breaks one of the two directions. This is `GOTCHAS.md` item 7.
+
+## See also
+
+- Complete list of contexts and hooks: [`hooks-and-contexts`](/en/realm/hooks-and-contexts)
+- Component hierarchy: [`component-architecture`](/en/realm/component-architecture)

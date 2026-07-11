@@ -22,10 +22,11 @@ This is the "runtime" manual: domains, DNS, deployment platform, object storage,
 
 ## Reading order
 
-1. `server-and-stack` — `server.js` entry, build stack, Next.js configuration
-2. `env-vars` — every `.env.example` field, purpose, and security tier
-3. `vercel-dnspod` — Vercel project settings, domain binding, DNSPod records
-4. `cos-and-cdn` — COS bucket layout, object key naming, version pointers
+1. `server-and-stack` — `server.js` entry and build commands
+2. `next-config` — `next.config.js` detailed configuration
+3. `env-vars` — every `.env.example` field, purpose, and security tier
+4. `vercel-dnspod` — Vercel project settings, domain binding, DNSPod records
+5. `cos-and-cdn` — COS bucket layout, object key naming, version pointers
 5. `font-hosting` — self-hosted Google Fonts fetching and upload
 6. `asset-pipeline` — `assets:prepare` → `build` → `publish` pipeline
 7. `rss-sitemap-robots` — dynamically generated SEO files

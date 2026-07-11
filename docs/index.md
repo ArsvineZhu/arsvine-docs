@@ -1,5 +1,6 @@
 ---
 pageType: home
+description: Arsvine Realm 主站与周边实验项目的系统手册、技术笔记和工程记录。
 
 hero:
   name: ARSVINE DOCS

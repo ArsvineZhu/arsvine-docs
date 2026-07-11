@@ -23,7 +23,6 @@ Realm 的视觉系统是「post-apocalyptic HUD」：低饱和、扫描式、强
 2. `visual-language` — 色板、间距、栅格、关键组件
 3. `loading-and-transitions` — 启动页、路由过渡、loading overlay
 4. `three-effects` — Three.js 效果与自适应性能联动
-5. `mayrain-portfolio` — 另一个风格线（待补）
 
 ## 不在本文档里
 

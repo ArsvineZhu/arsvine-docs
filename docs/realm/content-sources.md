@@ -14,7 +14,6 @@ Realm 项目把「内容」明确分成三层，**任何一层都不是完整的
 ```text
 data/
 ├── site.ts                 # 站点元信息（站名、author、tagline、social、fonts、locale）
-├── music.ts                # 音乐播放列表（早期遗留，运行时走 COS 目录）
 ├── projects/
 │   ├── index.ts            # zh-CN 兜底
 │   ├── en.ts

@@ -23,7 +23,6 @@ Realm's visual language is "post-apocalyptic HUD": low saturation, scan-line fee
 2. `visual-language` — color palette, spacing, grid, key components
 3. `loading-and-transitions` — opening screen, route transitions, loading overlay
 4. `three-effects` — Three.js effects and their link to adaptive performance
-5. `mayrain-portfolio` — the other design line (TBD)
 
 ## What is not in this doc
 

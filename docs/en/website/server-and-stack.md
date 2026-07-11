@@ -1,81 +1,50 @@
 ---
 title: Server & build stack
-description: server.js entry responsibilities, next.config.js configuration, build and start commands.
+description: server.js entry, build commands, Vercel project settings.
 ---
 
-# Server & build stack
+# Server & Build Stack
 
-## server.js
+## Custom server
 
-`server.js` is the dev and production entry. `pnpm dev` and `pnpm start` both run this file, **not** `next dev` / `next start`.
+Realm uses `server.js` for both dev and production — **not** `next dev` / `next start`.
 
-Its actual responsibilities (simplified):
+`server.js` loads `.env.local`, prepares the Next.js instance, creates the HTTP server, and listens on `PORT` (default 3000). See [`custom-server`](/en/realm/custom-server).
 
-1. Load `.env.local`
-2. Prepare Next.js (`next({ dev })`)
-3. Create the HTTP server
-4. For each request:
-   - Parse with `toParsedUrl(req)`, writing the URL first segment (if it is `zh-CN` / `zh-TW` / `en`) to `query.locale` (backward compatible for older hooks)
-   - Call `app.getRequestHandler()` and hand off to Next
-5. Listen for SIGTERM / SIGINT / SIGHUP with a graceful shutdown (3 s force-exit fallback)
-6. Listen on `process.env.PORT` (default 3000)
+`proxy.ts` is the Next.js middleware (Next.js 16 renamed `middleware.ts` to `proxy.ts`), handling locale routing and the `GEO_COUNTRY` cookie. See [`routes-and-proxy`](/en/realm/routes-and-proxy).
 
-Note: `server.js` does **not** perform locale selection — that is `proxy.ts`'s job. `server.js` only passes the URL first segment as `query.locale` so older code can keep using `useRouter().query.locale`.
-
-Optional bypass: an inline comment reserves a `if (parsedUrl.pathname.startsWith('/analytics/'))` block for a self-hosted analytics service proxy; enable only if needed.
-
-## next.config.js
-
-Key fields:
-
-```js
-distDir: process.env.NEXT_BUILD_DIR || '.next'
-```
-
-`NEXT_BUILD_DIR` lets a deployment wrapper specify a custom output directory; do not set it normally.
-
-```js
-allowedDevOrigins: ['dev.arsvine.com', '127.0.0.1', 'localhost']
-```
-
-In dev you must access the site via `dev.arsvine.com`; otherwise the COS bucket Referer check fails and images break.
-
-```js
-images: { remotePatterns }   // from config/image-hosts.js
-```
-
-`remotePatterns` is not declared here; it is centralized in `config/image-hosts.js`.
-
-Webpack disables `config.cache` in Windows production builds (`config.cache = false`) to avoid webpack 5 + Windows cache serialization issues.
-
-## i18n plugin
-
-```js
-const withNextIntl = createNextIntlPlugin('./i18n/request.ts');
-```
-
-`i18n/request.ts` is the next-intl 4 request config entry; it loads `locales/<locale>.json` per locale.
-
-## Entry trio
+## Build commands
 
 ```bash
 pnpm dev        # node server.js (dev)
-pnpm build      # next build (produces .next/)
+pnpm build      # next build (outputs .next/)
 pnpm start      # cross-env NODE_ENV=production node server.js
 ```
 
-Vercel project settings:
+## Vercel project settings
 
-| Item | Value |
+| Setting | Value |
 |---|---|
-| Framework Preset | Other (do **not** use Next.js) |
+| Framework Preset | Other (**do not** use Next.js) |
 | Install Command | `pnpm install` |
 | Build Command | `pnpm build` |
 | Start Command | `pnpm start` |
 | Node.js | 24.x |
 
-## Sub-builders
+`server.js` does **not** run in Vercel deployments — Vercel uses serverless functions. The Framework Preset must be set to Other, or the build may fail.
 
-`pnpm env:sync` runs `scripts/sync-env-files.mjs` to sync `.env.local` into `.env.example` (redacted). Both docs site and main site share the same `SECTIONS` list; add new env vars there.
+## Other commands
 
-`pnpm assets:prepare / build / publish` are the asset publishing pipeline (see `asset-pipeline`).
+```bash
+pnpm lint          # eslint .
+pnpm typecheck     # tsc --noEmit
+pnpm test          # vitest run
+pnpm check         # lint + typecheck + test + build
+pnpm env:sync      # scripts/sync-env-files.mjs
+```
+
+## See also
+
+- [`next-config`](/en/website/next-config) — `next.config.js` detailed configuration
+- [`env-vars`](/en/website/env-vars) — full environment variable documentation
+- [`custom-server`](/en/realm/custom-server) — `server.js` implementation details

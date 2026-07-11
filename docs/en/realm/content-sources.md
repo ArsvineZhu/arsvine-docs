@@ -14,7 +14,6 @@ All structured content (works, experience, life, friend links, skills, site meta
 ```text
 data/
 ├── site.ts                 # Site metadata (name, author, tagline, social, fonts, locale)
-├── music.ts                # Music playlist (legacy; runtime reads from COS catalog)
 ├── projects/
 │   ├── index.ts            # zh-CN fallback
 │   ├── en.ts

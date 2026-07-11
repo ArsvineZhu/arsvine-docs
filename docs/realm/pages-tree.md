@@ -61,15 +61,6 @@ description: pages/[locale] 下所有页面文件、动态路由参数、redirec
 - `life/[slug].tsx`：`paths` 从 `data/life` 展平（gameData / travelData / otherData）。`fallback: false`。
 - `blog/[slug].tsx`：`paths` 从 `blog-index.json` 拉取 slug 列表（在外部内容仓库配置时）或回退到 `content/blog/init/` 的内置文章。`fallback: 'blocking'` 让新增 slug 在被请求时实时生成（ISR）。
 
-## 状态与布局上下文
-
-详见 `routes-and-proxy` 之外的几个 context：
-
-- `contexts/AppContext.tsx` — 站级交互态与效果：loading 序列、power/battery/inversion、实时统计、首页打字机、column hover 状态。
-- `contexts/TransitionContext.tsx` — 控制路由过渡动画。**所有内部跳转必须用 `useTransition().navigateTo(url)`**，不能用 `router.push()`。支持 `setBackOverride()` 让 detail view 和 lightbox 拦截 BACK 行为。
-- `contexts/LayoutAnchorsContext.tsx` — 注册 active scroll container。因为 layout 用锁定高度的内容容器，深链 scroll 必须打到那个容器而不是 document viewport。
-- `contexts/SiteAssetsContext.tsx` — 提供 site-shell 资源（如 `favicon`、`og:image`、`avatar`）的解析结果。
-
 ## 路由 loading 覆盖层
 
 `useRouteLoadingKind(router)` 从「**离开的路径**」而不是「目标路径」决定 loading 变体：
@@ -78,3 +69,8 @@ description: pages/[locale] 下所有页面文件、动态路由参数、redirec
 - `blog detail → blog detail`：用 standalone overlay，左侧 HUD 已隐藏
 
 不能改成「按目标路径」判断——会破坏其中一种方向。这是 GOTCHAS.md 第 7 条。
+
+## 详情见
+
+- Contexts 与 hooks 的完整列表见 [`hooks-and-contexts`](/realm/hooks-and-contexts)
+- 组件层次见 [`component-architecture`](/realm/component-architecture)
