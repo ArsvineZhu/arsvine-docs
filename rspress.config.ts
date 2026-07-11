@@ -46,7 +46,6 @@ export default defineConfig({
       { text: 'Website', link: '/website/' },
       { text: 'AI', link: '/ai/' },
       { text: 'Design', link: '/design/' },
-      { text: 'English', link: '/en/' },
       { text: '返回主站', link: 'https://arsvine.com' },
     ],
 
